@@ -2,22 +2,51 @@
 # Operation.
 
 
-import numpy as np
+X = [[1,7,3], [4 ,3,6], [2,8,5]]
+Y = [[5,8,1], [6,7,3], [4,5,9]]
 
-M1 = np.array([[3, 6, 9], [5, -10, 15], [-7, 14, 21]])
-M2 = np.array([[2, -4, 3], [1, 2, 3], [4, -2, 3]])
 
-print("matrix1 : \n", M1)
-print("matrix2 : \n",M2)
+def add():
+    
+    result = [[0,0,0], [0,0,0], [0,0,0]]
+    
+    for i in range(len(X)):
+        for j in range(len(X[0])):
+            result[i][j] = X[i][j] + Y[i][j]
+    for r in result:
+        print(r)
+        
+def mul():
+    
+    result = [[0,0,0], [0,0,0], [0,0,0]]
+    
+    for i in range(len(X)):       #rows of X
+        for j in range(len(Y[0])):      #cols of Y
+            for k in range(len(Y)):      #rows of Y
+                result[i][j] += X[i][k] * Y[k][j]
+    for r in result:
+        print(r)
+        
+def transpose():
+    
+    result = [[0,0,0], [0,0,0], [0,0,0]]
+    #transpose of X
+    
+    for i in range(len(X)):             #rows 
+        for j in range(len(X[0])):       # columns
+            result[j][i] = X[i][j]
+    for r in result:
+        print(r)
+        
+print("X = ",X)
+print("Y = ",Y)
 
-M3 = M1 + M2  
-print("M1 + M2 : \n",M3)
-
-M4 = M1.dot(M2)  
-print("M1 * M2 : \n",M4)
-
-M5 = M1.transpose()
-print("Transpose of M1 \n",M5)
+print("Addition")       
+add()
+print("Multiplication")
+mul()
+print("Transpose of X")
+transpose()
 
 
 
